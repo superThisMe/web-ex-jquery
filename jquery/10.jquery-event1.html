@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    button {
+        width: 150px;
+        height: 50px;
+    }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.8.1.js"></script> -->
+    <script type="text/javascript">
+    $(function() {
+        //1. ***********
+        //$('#one').on('click', function(event) {
+        $('#one').click(function(event) {
+            $("#message").html("<h2>결과 1 : " + Math.random() + "</h2>");
+        });
+
+        //2. one : 1회성 이벤트
+        $('#two').one('click', function(event) {
+            $("#message").html("<h2>결과 2 : " + Math.random() + "</h2>");
+        });
+
+        //3. toggle : jQuery 1.9부터 사용 중지
+        // $('#three').toggle(
+        //     function(event) {
+        //         $("#message").html("<h2>결과 3 : TYPE A</h2>");
+        //     },
+        //     function(event) {
+        //         $("#message").html("<h2>결과 3 : TYPE B</h2>");
+        //     }
+        // );
+
+        //4. 
+        $('#four').hover(
+            function(event) {
+                $("#message").html("<h2>결과 4 : IN</h2>");
+            },
+            function(event) {
+                $("#message").html("<h2>결과 4 : OUT</h2>");
+            }
+        );
+        //5. ************
+        //$('#container h3').on('click', function(event) { // 현존 h3 대상
+        $('#container').on('click', "h3", function(event) { // 현재 + 앞으로 존재할 h3 대상
+            $("#message").html("<h2>결과 5 : " + Math.random() + "</h2>");
+        });
+        $('#five').on('click', function(event) {
+            $('<h3></h3>').text("나를 눌러 주세요")
+                          //.css({ "color": "red" })
+                          .appendTo('#container');
+        });
+
+        //6. 강제 이벤트 발생 ***************
+        $('#six').on('click', function(event) {
+            $('#one').trigger("click");
+        });
+
+    });
+    </script>
+</head>
+<body>
+    <button id="one">이벤트 테스트 1</button>
+    <button id="two">이벤트 테스트 2</button>
+    <button id="three">이벤트 테스트 3</button>
+    <button id="four">이벤트 테스트 4</button>
+    <br><br>
+    <button id="five">새항목 추가</button>
+    <button id="six">강제 이벤트 발생</button>
+    <hr>
+    <div id="message"></div>
+    <div id="container">
+        <h3>나를 눌러 주세요</h3>
+    </div>
+</body>
+</html>

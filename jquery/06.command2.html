@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Command 2</title>
+    <style type="text/css">
+    .select {
+        background-color: burlywood;
+    }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="a">
+        <h1 class="select">TEST MESSAGE</h1>
+        <h1>TEST MESSAGE</h1>
+        <h1 class="select">TEST MESSAGE</h1>
+    </div>
+    <hr>
+    <div id="b">
+        <h1 class="select">TEST MESSAGE</h1>
+        <h1>TEST MESSAGE</h1>
+        <h1 class="select">TEST MESSAGE</h1>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            // 1. each, is
+            //jQuery객체.each() : 포함된 객체들을 순회(반복)하면서 함수 호출
+            $('h1').each(function (idx, elem) {
+                if ($(this).is('.select')) { // this : 현재 처리 중인 객체
+                    $(this).css("color", "orange");
+                }
+            });
+
+            // 2. find
+            $("#b").find('.select').css("text-decoration", "underline");
+
+            // 3. addClass
+            $("#a h1").eq(1).addClass("select");
+
+            // 4. removeClass
+            $("#a h1").eq(0).removeClass("select");
+        });
+    </script>
+</body>
+
+</html>

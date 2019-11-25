@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <div id="message"></div>
+
+    <script type="text/javascript">
+        
+        var person = {
+            "no": 1,
+            "name": "David",
+            "email": [
+                "david@gmail.com",
+                "david213@hotmail.com"
+            ],
+            "phone": {
+                "home": "02-9922-9922",
+                "office": "070-9911-9911",
+                "mobile": "010-9292-9292"
+            },
+            "toString": function(p) {
+                var msg = `[${p.no}][${p.name}][${p.email[0]}, ${p.email[1]}][${p.phone.home}, ${p.phone.mobile}]`;
+                return msg;
+            }
+        }
+
+        var message = document.querySelector("#message");
+        message.innerHTML = `[${person.no}][${person.name}][${person.email[0]}, ${person.email[1]}][${person.phone.home}, ${person.phone.mobile}]`;
+        message.innerHTML += "<br>"
+        message.innerHTML += person.toString(person);
+
+    </script>
+</body>
+
+</html>

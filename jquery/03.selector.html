@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Selector</title>
+    <style type="text/css">
+        table {
+            width: 500px;
+        }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <h3>TEST MESSAGE 1</h3>
+    <h3 id="second">TEST MESSAGE 2</h3>
+    <h3 class="others">TEST MESSAGE 3</h3>
+    <h3 class="others">TEST MESSAGE 4</h3>
+    <div>
+        <h3>TEST MESSAGE 5</h3>
+        <span>
+            <h3>TEST MESSAGE 6</h3>
+        </span>
+    </div>
+    <table>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+        <tr>
+            <td>TEST</td>
+            <td>TEST</td>
+            <td>TEST</td>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+        $(function () {
+            // var h3List = $("h3"); // 태그 이름이 h3인 요소를 모두 찾으세요
+            // h3List.css("font-size", 30); // 발견된 모든 h3의 style.fontSize를 30으로 변경
+            $("h3").css("font-size", 30);
+            // 태그의 id 속성의 값이 second인 요소를 모두 찾으세요
+            $("#second").css("color", "#ff0000");
+            // 태그의 class 속성의 값이 others인 요소를 모두 찾으세요
+            $(".others").css("color", "#0000ff");
+            // div 태그에 포함된 h3 요소를 모두 찾으세요(자손)
+            $("div h3").css("color", "#00ff00");
+            // div 태그 1단계 하위에 포함된 h3 요소를 모두 찾으세요(자식)
+            $("div > h3").css("background-color", "gray");
+            // 홀수번째(1,3,5) tr 요소를 모두 찾으세요
+            $("tr:odd").css("background-color", "palegreen");
+            // 짝수번째(0,2,4) tr 요소를 모두 찾으세요
+            $("tr:even").css("background-color", "lightgray");
+            // 첫번째 위치한 td 요소를 찾으세요
+            $("td:first").css("color", "red");
+            // 마지막에 위치한 td 요소를 찾으세요
+            $("td:last").css("color", "blue");
+        });
+    </script>
+</body>
+
+</html>

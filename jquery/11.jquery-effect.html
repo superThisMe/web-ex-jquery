@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    button { 
+        width: 150px;
+        height: 50px;
+    }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //1.
+        $('#btn-one').on('click', function(event) {
+            if ($(this).text() == '숨기기') {
+                //$('#img-one').hide("slow"); // 600
+                $('#img-one').hide(2000);
+                $(this).text("보이기");
+            } else {
+                //$('#img-one').show("slow");
+                $('#img-one').show(2000);
+                $(this).text("숨기기");
+            }
+        });
+        $('#btn-two').on('click', function(event) {
+            $('#img-one').toggle(
+                "slow", // 속도
+                function() { // 변경이 끝난 후 호출되는 함수
+                    var txt = $('#btn-two').text()
+                    $('#btn-two').text( txt == "숨기기" ? "보이기" : "숨기기" )
+                }
+            );
+        });
+
+        //2.
+        $('#btn-three').on('click', function(event) {
+            if ($(this).text() == '숨기기2') {
+                $('#img-one').fadeOut(1000);
+                $(this).text("보이기2");
+            } else {
+                $('#img-one').fadeIn(1000);
+                $(this).text("숨기기2");
+            }
+        });
+        $('#btn-four').on('click', function(event) {
+            $('#img-one').fadeToggle(
+                "slow", // 속도
+                function() { // 변경이 끝난 후 호출되는 함수
+                    var txt = $('#btn-four').text()
+                    $('#btn-four').text( txt == "숨기기2" ? "보이기2" : "숨기기2" )
+                }
+            );
+        });
+        var amount = 0.1;
+        $('#btn-five').on('click', function(event) {
+            var opacity = $('#img-one').css("opacity");
+            $('#img-one').fadeTo(
+                "slow", // 속도
+                opacity - amount,    // 목표 값 (0 ~ 1)
+                function() { // 변경이 끝난 후 호출되는 함수
+                    if (opacity - amount <= 0 ||
+                        opacity - amount >= 1) {
+                        amount = -amount;
+                    }
+                    
+                    $('#btn-five').text( amount > 0 ? "흐리게" : "진하게" )
+                }
+            );
+        });
+
+        //3.
+        $('#btn-six').on('click', function(event) {
+            if ($(this).text() == '숨기기3') {
+                $('#img-one').slideUp(1000);
+                $(this).text("보이기3");
+            } else {
+                $('#img-one').slideDown(1000);
+                $(this).text("숨기기3");
+            }
+        });
+
+        //4.
+        $('#btn-seven').on('click', function(event) {
+            $('#img-two').animate(
+                {
+                    //"left": "+=100",
+                    "opacity": Math.random(),
+                    "width": Math.ceil(Math.random() * 400) + 100,
+                    "height": Math.ceil(Math.random() * 400) + 100
+                }, //속성 값 목록
+                1000
+            );
+        });
+    });
+    </script>
+</head>
+<body>
+    <button id="btn-one">숨기기</button>
+    <button id="btn-two">숨기기</button>
+    <button id="btn-three">숨기기2</button>
+    <button id="btn-four">숨기기2</button>
+    <button id="btn-five">흐리게</button>
+    <button id="btn-six">숨기기3</button>
+    <br><br>
+    <img id="img-one" width="500" src="image/Lighthouse.jpg">
+    <hr>
+    <button id="btn-seven">애니메이션</button>
+    <br><br>
+    <img id="img-two" width="300" src="image/Chrysanthemum.jpg"
+        style="position:absolute">
+    
+    <script type="text/javascript"></script>
+</body>
+</html>

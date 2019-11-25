@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello jQuery</title>
+    <style type="text/css">
+
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+</head>
+
+<body>
+
+    <button id="push-me">눌러주세요</button>
+    <hr>
+    <div id="message"></div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#push-me').on('click', function (event) {
+                $('#message').html(`<h2>Hello jQuery ${Math.ceil(Math.random() * 10)}</h2>`);
+            });
+        });
+    </script>
+</body>
+
+</html>

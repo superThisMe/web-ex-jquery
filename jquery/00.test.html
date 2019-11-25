@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+    <style type="text/css">
+
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <div id="div-one"></div>
+    <input id="number" type="text">
+    <button id="btn-one">숫자를 읽어주세요</button>
+
+    <script type="text/javascript">
+        $(function () {
+            // test 1
+            // $('#div-one').css("border", "solid 1px").css("width", 200).css("height", 200).css("background-color", "rgb(255,0,0"); // 색상 = "rgb(255,0,0)", "#ff0000", "red"
+            $('#div-one').css({ "border": "solid 1px", "width": 200, "height": 200, "background-color": "rgb(255,0,0)", "text-align": "center", "line-height": "200px" }); // JSON으로 묶어서 처리
+
+            // test 2
+            $('#btn-one').on('click', function () {
+                $('#div-one').html($('#number').val());
+            });
+        });
+    </script>
+</body>
+
+</html>

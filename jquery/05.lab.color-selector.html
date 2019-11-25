@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Practice</title>
+    <style type="text/css">
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+    <div id="canvas"></div>
+    <table>
+        <tr>
+            <td><button id="red-up" class="up">△</button></td>
+            <td><input id="red" type="text" class="value"></td>
+            <td><button id="red-down" class="down">▽</button></td>
+            <td rowspan="3"><button id="btn">적용</button></td>
+        </tr>
+        <tr>
+            <td><button id="green-up" class="up">△</button></td>
+            <td><input id="green" type="text" class="value"></td>
+            <td><button id="green-down" class="down">▽</button></td>
+        </tr>
+        <tr>
+            <td><button id="blue-up" class="up">△</button></td>
+            <td><input id="blue" type="text" class="value"></td>
+            <td><button id="blue-down" class="down">▽</button></td>
+        </tr>
+    </table>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $('#canvas').css({
+                "border": "solid 1pt",
+                "width": "300px",
+                "height": "300px"
+            });
+            $('input').css("width", "150px");
+            $('#btn').css({ "width": "70px", "height": "70px" });
+
+
+            $('#btn').on('click', function (event) {
+                intervals.forEach(clearInterval);
+                changeRgb();
+            });
+
+            function changeRgb() {
+                var r = $('#red').val();
+                var g = $('#green').val();
+                var b = $('#blue').val();
+                if ((r > 255 || g > 255 || b > 255) || (r < 0 || g < 0 || b < 0)) {
+                    $('#canvas').html("잘못된 입력입니다. (0~255)")
+                } else {
+                    $('#canvas').css("background-color", "rgb(" + r + "," + g + "," + b + ")");
+                    $('#canvas').html("")
+                }
+            }
+
+            var timer = null;
+            var intervals = [];
+            $('.up').add('.down').on('click', function (event) {
+                timer = window.setInterval(function () {
+                    var c = event.target.className;
+                    var v = $(`#${event.target.id}`).parents().eq(1).find('.value').val();
+                    if (c === "up") {
+                        v++;
+                        if (v > 255) {
+                            v = 0;
+                        }
+                    } else {
+                        v--;
+                        if (v < 0) {
+                            v = 255;
+                        }
+                    }
+                    $(`#${event.target.id}`).parents().eq(1).find('.value').val(v);
+                    changeRgb();
+                }, 100);
+                intervals.push(timer);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
